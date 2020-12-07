@@ -1,5 +1,6 @@
 // Initialize express
 const express = require('express')
+const methodOverride = require('method-override')
 const app = express()
 
 // require handlebars
@@ -14,6 +15,7 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main', handlebars: allowInsecu
 // Use handlebars to render
 app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'))
 
 // OUR MOCK ARRAY OF PROJECTS
 var artworks = [
@@ -51,6 +53,28 @@ app.get('/artworks/:id', (req, res) => {
     console.log(err.message);
   })
 })
+
+// EDIT
+app.get('/artworks/:id/edit', (req, res) => {
+  models.Artwork.findByPk(req.params.id).then((artwork) => {
+    res.render('artworks-edit', { artwork: artwork });
+  }).catch((err) => {
+    console.log(err.message);
+  })
+});
+
+// UPDATE
+app.put('/artworks/:id', (req, res) => {
+  models.Artwork.findByPk(req.params.id).then(artwork => {
+    artwork.update(req.body).then(artwork => {
+      res.redirect(`/artworks/${req.params.id}`);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }).catch((err) => {
+    console.log(err);
+  });
+});
 
 // Choose a port to listen on
 const port = process.env.PORT || 3000;

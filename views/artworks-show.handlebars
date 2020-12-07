@@ -1,8 +1,14 @@
 <div class="row mt-3">
   <div class="col-lg-6 offset-lg-3">
-    <img class="img-fluid w-100 rounded mb-3" src="{{artwork.imgUrl}}" alt="Card image cap">
+    <img:hover>
+      <img class="img-fluid w-100 rounded mb-3" src="{{artwork.imgUrl}}" alt="Card image cap">
+    </img:hover>
+
     <h2>{{artwork.name}}</h2>
     <div class="mt-n2 lead"><strong><em>{{artwork.title}}</strong></em></div>
     <div class="mt-n1 text-dark lead">{{artwork.desc}}</div>
+    <div class="text-right">
+      <a href="/artworks/{{artwork.id}}/edit" class="btn btn-primary">Edit</a>
+    </div>
   </div>
 </div>
