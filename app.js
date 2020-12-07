@@ -37,10 +37,19 @@ app.get('/artworks/new', (req, res) => {
 // CREATE
 app.post('/artworks', (req, res) => {
   models.Artwork.create(req.body).then(artwork => {
-    res.redirect(`/`);
+    res.redirect(`/artworks/${artwork.id}`)
   }).catch((err) => {
     console.log(err)
   });
+})
+
+// SHOW
+app.get('/artworks/:id', (req, res) => {
+  models.Artwork.findByPk(req.params.id).then((artwork) => {
+    res.render('artworks-show', { artwork: artwork })
+  }).catch((err) => {
+    console.log(err.message);
+  })
 })
 
 // Choose a port to listen on
