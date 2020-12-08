@@ -23,11 +23,16 @@
               <label for="desc">Image Url</label>
               <textarea name="imageUrl" class="form-control" placeholder="The url of your artwork.">{{artwork.imgUrl}}</textarea>
             </div>
-            <div class="text-right">
-              <a href="/artworks/{{artwork.id}}" class='text-muted mr-2'>Cancel</a>
-              <button type="submit" class="btn btn-primary" name="button">Update</button>
+            <div class="pt-4 text-right">
+              <a href="/artworks/{{artwork.id}}" class='text-muted mr-2 mt-n4 mb-2'>Cancel</a>
+              <button type="submit" class="btn btn-primary mt-n4 mb-2" name="button">Update</button>
             </div>
           </form>
+          <div class="mt-n5">
+            <form action="/artworks/{{artwork.id}}?_method=DELETE" method="POST">
+              <button type="submit" class='btn btn-danger mt-1.5'>Delete</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
