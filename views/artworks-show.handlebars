@@ -1,9 +1,9 @@
-<div class="row mt-3">
-  <div class="col-lg-6 offset-lg-3">
-    <img:hover>
-      <img class="img-fluid w-100 rounded mb-3" src="{{artwork.imgUrl}}" alt="Card image cap">
-    </img:hover>
+<div class="row justify-content-between mt-4 ml-n4">
 
+  <div class="col-lg-9">
+    <img:hover>
+      <img class="img-fluid w-110 rounded mb-3" src="{{artwork.imgUrl}}" alt="Card image cap">
+    </img:hover>
     <h2>{{artwork.name}}</h2>
     <div class="mt-n2 lead"><strong><em>{{artwork.title}}</strong></em></div>
     <div class="mt-n1 text-dark lead">{{artwork.desc}}</div>
@@ -11,4 +11,27 @@
       <a href="/artworks/{{artwork.id}}/edit" class="btn btn-primary">Edit</a>
     </div>
   </div>
+
+  <div class="col-lg-3 offset-lg-8 mt-5 mb-5">
+      <div class="d-flex flex-row-reverse flex-column justify-content-between">
+          <b>Inquiries</b>
+          <a href="/artworks/{{artwork.id}}/inquiries/new" class="btn btn-primary btn-sm">Inquire</a>
+      </div>
+      <div class="list-group mt-4 float-left">
+        {{#each artwork.Inquiries}}
+          <div class="list-group-item float-left">
+            <div class="float-left lead">
+              <strong>{{this.name}}</strong>
+            </div>
+            <p class="text-center">{{this.comment}}</p>
+            <div class="float-right">
+              <form class="form-inline" action="/artworks/{{../artwork.id}}/inquiries/{{this.id}}?_method=DELETE" method="post">
+                <button type="submit" class="btn btn-link btn-sm">Remove</button>
+              </form>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+  </div>
+
 </div>

@@ -6,7 +6,7 @@ module.exports = function (app, models) {
             res.render('artworks-index', { artworks: artworks });
         })
     })
-    
+
     // NEW
     app.get('/artworks/new', (req, res) => {
       res.render('artworks-new', {});
@@ -23,12 +23,12 @@ module.exports = function (app, models) {
 
     // SHOW
     app.get('/artworks/:id', (req, res) => {
-      models.Artwork.findByPk(req.params.id).then((artwork) => {
-        res.render('artworks-show', { artwork: artwork })
-      }).catch((err) => {
-        console.log(err.message);
-      })
-    })
+        models.Artwork.findByPk(req.params.id, { include: [{ model: models.Inquiry }] }).then(artwork => {
+            res.render('artworks-show', { artwork: artwork });
+        }).catch((err) => {
+            console.log(err.message);
+        })
+    });
 
     // EDIT
     app.get('/artworks/:id/edit', (req, res) => {

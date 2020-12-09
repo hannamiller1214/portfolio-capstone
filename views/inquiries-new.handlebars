@@ -1,0 +1,34 @@
+<div class="row mt-4">
+    <div class="col-lg-6 offset-lg-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    <h3>New Inquiry</h3>
+                    <div class="lead">
+                        Artwork: <em>{{artwork.title}}</em>
+                    </div>
+                </div>
+                <div class="card-text">
+                    <form action="/artworks/{{artwork.id}}/inquiries" method="post">
+                        <div class="form-group">
+                            <label for="title">Name</label>
+                            <input name="name" class="form-control" placeholder="Jane Doe" />
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Email</label>
+                            <input name="email" class="form-control" placeholder="Jane.Doe@gmail.com" />
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Comment</label>
+                            <textarea name="comment" class="form-control" placeholder="Write your comment here!"></textarea>
+                        </div>
+                        <div class="text-right">
+                            <a href="/" class='text-muted mr-2'>Cancel</a>
+                            <button type="submit" class="btn btn-primary" name="button">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
