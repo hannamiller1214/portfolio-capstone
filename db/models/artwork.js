@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Artwork.associate = function(models) {
     Artwork.hasMany(models.Inquiry);
+    Artwork.belongsTo(models.User);
   };
 
   return Artwork;

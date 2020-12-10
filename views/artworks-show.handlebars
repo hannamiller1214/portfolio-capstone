@@ -1,9 +1,7 @@
 <div class="row justify-content-between mt-4 ml-n4">
 
   <div class="col-lg-9">
-    <img:hover>
-      <img class="img-fluid w-110 rounded mb-3" src="{{artwork.imgUrl}}" alt="Card image cap">
-    </img:hover>
+    <img class="img-fluid w-110 rounded mb-3 art" src="{{artwork.imgUrl}}" alt="Card image cap">
     <h2>{{artwork.name}}</h2>
     <div class="mt-n2 lead"><strong><em>{{artwork.title}}</strong></em></div>
     <div class="mt-n1 text-dark lead">{{artwork.desc}}</div>
@@ -12,7 +10,7 @@
     </div>
   </div>
 
-  <div class="col-lg-3 offset-lg-8 mt-5 mb-5">
+  <div class="col-lg-3 mt-5 mb-5">
       <div class="d-flex flex-row-reverse flex-column justify-content-between">
           <b>Inquiries</b>
           <a href="/artworks/{{artwork.id}}/inquiries/new" class="btn btn-primary btn-sm">Inquire</a>

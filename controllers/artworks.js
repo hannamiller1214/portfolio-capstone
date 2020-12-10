@@ -2,6 +2,7 @@ module.exports = function (app, models) {
 
     // INDEX
     app.get('/', (req, res) => {
+        console.log(req.user)
         models.Artwork.findAll({ order: [['createdAt', 'DESC']] }).then(artworks => {
             res.render('artworks-index', { artworks: artworks });
         })
@@ -15,6 +16,7 @@ module.exports = function (app, models) {
     // CREATE
     app.post('/artworks', (req, res) => {
       models.Artwork.create(req.body).then(artwork => {
+        artwork.setUser(res.locals.currentUser)
         res.redirect(`/artworks/${artwork.id}`)
       }).catch((err) => {
         console.log(err)
