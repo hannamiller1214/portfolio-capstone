@@ -31,6 +31,7 @@ module.exports = function (app, models) {
 
   //Login POST
   app.post('/login', (req, res, next) => {
+    console.log(req.body)
     models.User.findOne({ where: { email: req.body.email } }).then(user => {
       user.comparePassword(req.body.password, function (err, isMatch) {
         if (err) {
